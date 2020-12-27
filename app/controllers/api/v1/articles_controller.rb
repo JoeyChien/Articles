@@ -9,7 +9,7 @@ class Api::V1::ArticlesController < ApplicationController
     if article
       render json: { status: 'SUCCESS', message: 'Show article', data: articles}
     else
-      render json: { status: 'ERROR', message: 'Article does not exist', data: 'nil'}
+      render json: { status: 'ERROR', message: 'Article does not exist', data: 'null'}
     end 
   end
 
@@ -29,7 +29,7 @@ class Api::V1::ArticlesController < ApplicationController
       article.destroy
       render json: { status: 'SUCCESS', message: 'Article was deleted', data: article}
     else
-      render json: { status: 'ERROR', message: 'Article does not exist', data: 'nil'}
+      render json: { status: 'ERROR', message: 'Article does not exist', data: 'null'}
     end
   end
 
@@ -40,10 +40,10 @@ class Api::V1::ArticlesController < ApplicationController
       if article.update(article_params)
         render json: { status: 'SUCCESS', message: 'Updated article', data: article}
       else
-        render json: { status: 'ERROR', message: 'Update failed', data: nil}  
+        render json: { status: 'ERROR', message: 'Update failed', data: article.errors}  
       end
     else
-      render json: { status: 'ERROR', message: 'Article does not exist', data: 'nil'}
+      render json: { status: 'ERROR', message: 'Article does not exist', data: 'null'}
     end 
   end
 
